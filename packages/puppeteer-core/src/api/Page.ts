@@ -66,6 +66,7 @@ import type {Browser} from './Browser.js';
 import type {BrowserContext} from './BrowserContext.js';
 import type {ElementHandle} from './ElementHandle.js';
 import type {JSHandle} from './JSHandle.js';
+import {Locator} from './Locator.js';
 
 /**
  * @public
@@ -785,6 +786,10 @@ export class Page extends EventEmitter {
    */
   getDefaultTimeout(): number {
     throw new Error('Not implemented');
+  }
+
+  locator(selector: string): Locator {
+    return new Locator(this, selector);
   }
 
   /**

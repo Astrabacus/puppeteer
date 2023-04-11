@@ -43,6 +43,16 @@ export class CustomError extends Error {
 export class TimeoutError extends CustomError {}
 
 /**
+ * AbortError is emitted whenever certain operations are aborted.
+ *
+ * @remarks
+ * Example operations are {@link Locator.click | locator().click()}.
+ *
+ * @public
+ */
+export class AbortError extends CustomError {}
+
+/**
  * ProtocolError is emitted whenever there is an error from the protocol.
  *
  * @public
