@@ -99,7 +99,7 @@ describe('Screenshots', function () {
         );
       }
       const screenshots = await Promise.all(promises);
-      expect(screenshots[1]!).toBeGolden('grid-cell-1.png');
+      expect(screenshots[1]).toBeGolden('grid-cell-1.png');
     });
     it('should take fullPage screenshots', async () => {
       const {page, server} = getTestState();

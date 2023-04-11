@@ -148,17 +148,3 @@ export const waitEvent = (
     });
   });
 };
-
-/**
- * @deprecated Use exports directly.
- */
-export default {
-  extendExpectWithToBeGolden,
-  waitEvent,
-  dumpFrames,
-  navigateFrame,
-  isFavicon,
-  attachFrame,
-  projectRoot,
-  detachFrame,
-};

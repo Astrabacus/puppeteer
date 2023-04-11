@@ -2220,7 +2220,7 @@ describe('Page', function () {
         'black',
         'magenta'
       );
-      expect(result.length).toEqual(1);
+      expect(result).toHaveLength(1);
     });
     it('should return [] on no values', async () => {
       const {page, server} = getTestState();

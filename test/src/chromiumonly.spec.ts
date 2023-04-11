@@ -107,7 +107,7 @@ describe('Chromium-Specific Launcher tests', function () {
       const {defaultBrowserOptions, puppeteer} = getTestState();
       const options = Object.assign({pipe: true}, defaultBrowserOptions);
       const browser = await puppeteer.launch(options);
-      expect((await browser.pages()).length).toBe(1);
+      expect(await browser.pages()).toHaveLength(1);
       expect(browser.wsEndpoint()).toBe('');
       const page = await browser.newPage();
       expect(await page.evaluate('11 * 11')).toBe(121);

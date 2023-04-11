@@ -26,9 +26,7 @@ import {
   setupTestBrowserHooks,
   setupTestPageAndContextHooks,
 } from './mocha-utils.js';
-import utils from './utils.js';
-
-const {waitEvent} = utils;
+import {waitEvent} from './utils.js';
 
 describe('Target', function () {
   setupTestBrowserHooks();
@@ -55,7 +53,7 @@ describe('Target', function () {
 
     // The pages will be the testing page
     const allPages = await context.pages();
-    expect(allPages.length).toBe(1);
+    expect(allPages).toHaveLength(1);
     expect(allPages).toContain(page);
   });
   it('should contain browser target', async () => {

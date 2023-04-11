@@ -47,7 +47,7 @@ describe('Workers', function () {
     ).toBe('worker function result');
 
     await page.goto(server.EMPTY_PAGE);
-    expect(page.workers().length).toBe(0);
+    expect(page.workers()).toHaveLength(0);
   });
   it('should emit created and destroyed events', async () => {
     const {page} = getTestState();
@@ -101,7 +101,7 @@ describe('Workers', function () {
     });
     const log = await logPromise;
     expect(log.text()).toBe('1 2 3 JSHandle@object');
-    expect(log.args().length).toBe(4);
+    expect(log.args()).toHaveLength(4);
     expect(await (await log.args()[3]!.getProperty('origin')).jsonValue()).toBe(
       'null'
     );

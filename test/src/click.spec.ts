@@ -22,7 +22,7 @@ import {
   setupTestBrowserHooks,
   setupTestPageAndContextHooks,
 } from './mocha-utils.js';
-import utils from './utils.js';
+import {attachFrame} from './utils.js';
 
 describe('Page.click', function () {
   setupTestBrowserHooks();
@@ -417,7 +417,7 @@ describe('Page.click', function () {
 
     await page.goto(server.EMPTY_PAGE);
     await page.setContent('<div style="width:100px;height:100px">spacer</div>');
-    await utils.attachFrame(
+    await attachFrame(
       page,
       'button-test',
       server.PREFIX + '/input/button.html'
@@ -440,7 +440,7 @@ describe('Page.click', function () {
     await page.setContent(
       '<div style="width:100px;height:2000px">spacer</div>'
     );
-    await utils.attachFrame(
+    await attachFrame(
       page,
       'button-test',
       server.CROSS_PROCESS_PREFIX + '/input/button.html'
@@ -466,7 +466,7 @@ describe('Page.click', function () {
       })
     ).toBe(5);
     await page.setContent('<div style="width:100px;height:100px">spacer</div>');
-    await utils.attachFrame(
+    await attachFrame(
       page,
       'button-test',
       server.PREFIX + '/input/button.html'
