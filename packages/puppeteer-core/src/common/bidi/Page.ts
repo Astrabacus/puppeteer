@@ -28,6 +28,7 @@ import {
 import {isErrorLike} from '../../util/ErrorLike.js';
 import {ConsoleMessage, ConsoleMessageLocation} from '../ConsoleMessage.js';
 import {Handler} from '../EventEmitter.js';
+import {NetworkManagerEmittedEvents} from '../NetworkManager.js';
 import {PDFOptions} from '../PDFOptions.js';
 import {EvaluateFunc, HandleFor} from '../types.js';
 import {debugError, waitWithTimeout} from '../util.js';
@@ -66,6 +67,32 @@ export class Page extends PageBase {
     for (const [event, subscriber] of this.#subscribedEvents) {
       this.#context.on(event, subscriber);
     }
+
+    this.#subscribeToNetworkManagerEvents();
+  }
+
+  #subscribeToNetworkManagerEvents() {
+    const networkManager = this.#context.networkManager;
+
+    networkManager.on(NetworkManagerEmittedEvents.Request, event => {
+      return this.emit(PageEmittedEvents.Request, event);
+    });
+    networkManager.on(
+      NetworkManagerEmittedEvents.RequestServedFromCache,
+      event => {
+        return this.emit(PageEmittedEvents.RequestServedFromCache, event);
+      }
+    );
+    networkManager.on(NetworkManagerEmittedEvents.RequestFailed, event => {
+      return this.emit(PageEmittedEvents.RequestFailed, event);
+    });
+    networkManager.on(NetworkManagerEmittedEvents.RequestFinished, event => {
+      return this.emit(PageEmittedEvents.RequestFinished, event);
+    });
+
+    networkManager.on(NetworkManagerEmittedEvents.Response, event => {
+      return this.emit(PageEmittedEvents.Response, event);
+    });
   }
 
   #onLogEntryAdded(event: Bidi.Log.LogEntry): void {
