@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [19.10.0](https://github.com/puppeteer/puppeteer/compare/puppeteer-core-v19.9.1...puppeteer-core-v19.10.0) (2023-04-19)
+
+
+### Features
+
+* support AbortController in waitForSelector ([#10018](https://github.com/puppeteer/puppeteer/issues/10018)) ([9109b76](https://github.com/puppeteer/puppeteer/commit/9109b76276c9d86a2c521c72fc5b7189979279ca))
+* **webworker:** expose WebWorker.client ([#10042](https://github.com/puppeteer/puppeteer/issues/10042)) ([c125128](https://github.com/puppeteer/puppeteer/commit/c12512822a546e7bfdefd2c68f020aab2a308f4f))
+
 ## [19.9.1](https://github.com/puppeteer/puppeteer/compare/puppeteer-core-v19.9.0...puppeteer-core-v19.9.1) (2023-04-17)
 
 
